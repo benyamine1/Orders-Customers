@@ -1,6 +1,4 @@
 var Order = mongoose.model('Order');
-// var Product = mongoose.model('Product');
-// var Quantity = mongoose.model('Quantity');
 
 module.exports = (function (){
 	return {
