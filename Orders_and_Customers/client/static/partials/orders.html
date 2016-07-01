@@ -1,0 +1,41 @@
+<style type="text/css">
+	table, th, td {
+		border: 1px solid black;
+		border-collapse: collapse;
+	}
+	th, td {
+	    padding: 5px;
+	    text-align: left;
+	}
+</style>
+<div ng-controller="OrdersController as OC">
+	<h3>Add a new order</h3>
+	Customer
+	 <select ng-model='OC.newOrder.name'>
+	 	<option ng-repeat='customer in OC.customers'>{{customer.name}}</option>
+	 </select> <br>
+	Order
+	<select ng-model = 'OC.newOrder.quantity'>
+		<option ng-repeat="quantity in OC.quantities">{{quantity}}</option>
+	</select>
+	<select ng-model = 'OC.newOrder.product'>
+		<option ng-repeat="product in OC.products">{{product}}</option>
+	</select>
+	<button ng-click='OC.addOrders()'>Order</button>
+	<br><br>
+	<input type='text' ng-model='filter' placeholder='filter....'> <br><br>
+	<table>
+	  <tr>
+	    <th>Custmer Name</th>
+	    <th>Product</th>
+	    <th>Quantity</th>
+	    <th>Date</th>
+	  </tr>
+	  <tr ng-repeat='order in OC.orders | filter:filter'>
+        <td>{{order.name}}</td>
+        <td>{{order.product}}</td>
+        <td>{{order.quantity}}</td>
+        <td>{{OC.currentDate | date:'MMMM dd yyyy'}}</td>
+	  </tr>
+	</table>
+</div>

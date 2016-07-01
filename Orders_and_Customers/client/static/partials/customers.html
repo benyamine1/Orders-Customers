@@ -1,0 +1,30 @@
+<style type="text/css">
+	table, th, td {
+		border: 1px solid black;
+		border-collapse: collapse;
+	}
+	th, td {
+	    padding: 5px;
+	    text-align: left;
+	}
+</style>
+<div ng-controller="CustomersController as CC">
+	<h3>Add a new customer</h3>
+	<form>
+		Customer Name: <input type='text' ng-model='CC.newCustomer.name'>
+		<input type='submit' ng-click='CC.addCustomer()'>
+	</form>
+	<input type='text' ng-model='search_name' placeholder='search name....'> <br><br>
+	<table>
+	  <tr>
+	    <th>Customer Name</th>
+	    <th>Created Date</th>
+	    <th>Actions</th>
+	  </tr>
+	  <tr ng-repeat='customer in CC.customers | filter:search_name'>
+        <td>{{customer.name}}</td>
+        <td>{{CC.currentDate | date:'MMMM dd yyyy'}}</td>
+        <td><button ng-click='CC.removeCustomer(customer._id)'>Remove</button></td>
+	  </tr>
+	</table>
+</div>
